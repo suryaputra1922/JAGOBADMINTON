@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jago Badminton - Teknik Dasar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Latar Belakang Gambar Atlet Badminton */
+        .bg-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), 
+                              url('https://unsplash.com'); /* Gambar atlet default jika online */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Kontainer Utama Slide */
+        .slide-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Desain Setiap Slide */
+        .slide {
+            display: none;
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        /* Animasi Perpindahan Slide */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1.main-title {
+            color: #ffcc00;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2.slide-title {
+            color: #00ffcc;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p.slide-desc {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f0f0f0;
+            text-align: justify;
+        }
+
+        /* Navigasi Tombol */
+        .navigation {
+            position: absolute;
+            bottom: 50px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: #ffcc00;
+            color: #111;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #00ffcc;
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            background: #555;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Kontrol Audio */
+        .audio-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar Belakang -->
+    <div class="bg-background"></div>
+
+    <!-- Kontrol Audio/Musik -->
+    <div class="audio-control">
+        <span>🎵 Musik Latar</span>
+        <!-- GANTI 'audio-kamu.mp3' dengan file lagu milikmu jika ingin lokal -->
+        <audio id="bg-music" src="audio-kamu.mp3" loop autoplay controls></audio>
+    </div>
+
+    <!-- Kontainer Slide -->
+    <div class="slide-container">
+
+        <!-- Slide 1: Judul Utama -->
+        <div class="slide active">
+            <h1 class="main-title">Jago Badminton</h1>
+            <h2 class="slide-title">Kuasai 5 Teknik Dasar Utama</h2>
+            <p class="slide-desc" style="text-align: center;">
+                Selamat datang di panduan kilat "Jago Badminton". Untuk menjadi pemain hebat, Anda wajib menguasai teknik-teknik dasar dengan benar. Klik tombol 'Selanjutnya' di bawah untuk mulai belajar!
+            </p>
+        </div>
+
+        <!-- Slide 2: Cara Memegang Raket -->
+        <div class="slide">
+            <h2 class="slide-title">1. Cara Memegang Raket (Grip)</h2>
+            <p class="slide-desc">
+                Teknik paling awal adalah memegang raket. Ada dua jenis pegangan utama: <strong>Forehand Grip</strong> (seperti bersalaman, posisi raket miring) dan <strong>Backhand Grip</strong> (ibu jari menekan bagian datar gagang raket). Pegangan yang benar mencegah cedera pergelangan tangan.
+            </p>
+        </div>
+
+        <!-- Slide 3: Sikap Berdiri -->
+        <div class="slide">
+            <h2 class="slide-title">2. Sikap Berdiri & Gerak Kaki (Footwork)</h2>
+            <p class="slide-desc">
+                Posisi tubuh harus selalu siap dengan lutut sedikit ditekuk demi keseimbangan optimal. <strong>Footwork</strong> yang lincah menuntut Anda menguasai langkah kaki ke depan, belakang, dan samping agar bisa mengejar shuttlecock ke sudut lapangan mana pun secara efisien.
+            </p>
+        </div>
+
+        <!-- Slide 4: Servis -->
+        <div class="slide">
+            <h2 class="slide-title">3. Teknik Servis (Service)</h2>
+            <p class="slide-desc">
+                Servis adalah modal awal untuk meraih poin. Terbagi menjadi <strong>Servis Pendek (Short Serve)</strong> yang tipis di atas net (sering untuk ganda), dan <strong>Servis Tinggi (Long Serve)</strong> yang melambung jauh ke garis belakang musuh (sering untuk tunggal).
+            </p>
+        </div>
+
+        <!-- Slide 5: Pukulan Smash -->
+        <div class="slide">
+            <h2 class="slide-title">4. Pukulan Smash</h2>
+            <p class="slide-desc">
+                Smash adalah pukulan serangan utama untuk mematikan langkah lawan. Teknik ini dilakukan dengan memukul shuttlecock sekuat tenaga dari posisi tinggi secara menukik tajam ke arah area lapangan lawan, mengandalkan kekuatan lompatan dan ayunan lengan yang cepat.
+            </p>
+        </div>
+
+        <!-- Slide 6: Pukulan Drop Shot -->
+        <div class="slide">
+            <h2 class="slide-title">5. Pukulan Drop Shot</h2>
+            <p class="slide-desc">
+                Drop shot adalah pukulan tipuan yang menuntut akurasi. Gerakannya menyerupai smash, namun saat raket menyentuh shuttlecock, tenaga dikurangi agar bola jatuh tipis di dekat net lawan. Teknik ini sangat ampuh mengecoh lawan yang terlanjur mundur ke belakang.
+            </p>
+        </div>
+
+        <!-- Tombol Navigasi -->
+        <div class="navigation">
+            <button id="prev-btn" onclick="changeSlide(-1)" disabled>Sebelumnya</button>
+            <button id="next-btn" onclick="changeSlide(1)">Selanjutnya</button>
+        </div>
+
+    </div>
+
+    <!-- JavaScript untuk Sistem Slide -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const music = document.getElementById('bg-music');
+
+        // Mengatasi aturan browser modern yang memblokir audio autoplay sebelum klik pertama
+        document.body.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().catch(error => console.log("Audio play dipicu interaksi pengguna"));
+            }
+        }, { once: true });
+
+        function changeSlide(direction) {
+            // Sembunyikan slide aktif saat ini
+            slides[currentSlide].classList.remove('active');
+            
+            // Hitung index slide baru
+            currentSlide += direction;
+
+            // Tampilkan slide baru
+            slides[currentSlide].classList.add('active');
+
+            // Atur status tombol navigasi
+            prevBtn.disabled = (currentSlide === 0);
+            nextBtn.disabled = (currentSlide === slides.length - 1);
+        }
+    </script>
+</body>
+  </html>
+              
